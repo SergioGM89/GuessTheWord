@@ -23,6 +23,7 @@ function getIdRejected(state, action) {
     console.log('rejected');
     state.loading = false;
     state.error = action.error.message;
+    console.log(action.error);
     console.log(state.error);
 }
 
