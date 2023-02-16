@@ -9,8 +9,8 @@ import idFetch from "../features/thunks";
 import { useEffect } from "react";
 
 function Game() {
-    const id = useSelector(state => state.nombre.id);
-    const errorId = useSelector(state => state.nombre.error);
+    const id = useSelector(state => state.gameId.id);
+    const errorId = useSelector(state => state.gameId.error);
     const dispatch = useDispatch();
 
     useEffect(() => {

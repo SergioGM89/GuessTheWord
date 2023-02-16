@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import idReducer from "./asyncSlice";
+import idReducer from "./GameIdSlice";
+import wordReducer from "./wordSlice";
 
 const store = configureStore({
     reducer: {
-        nombre: idReducer
+        gameId: idReducer,
+        currentWord: wordReducer
     }
 });
 
