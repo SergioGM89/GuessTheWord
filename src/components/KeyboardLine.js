@@ -1,18 +1,17 @@
 import Key from "./Key";
 
 function KeyboardLine(props) {
+
+    const line = props.line;
+    console.log(line);
+
     return (
+
         <div className="keyboard-line">
-            <Key />
-            <Key />
-            <Key />
-            <Key />
-            <Key />
-            <Key />
-            <Key />
-            <Key />
-            <Key />
-            <Key />
+            {line.map((letter) => (
+                    <Key letter={letter} />
+                )
+                )}
         </div>
     )
 }

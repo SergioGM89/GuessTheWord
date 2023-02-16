@@ -12,7 +12,7 @@ function showSelected(state, action) {
 }
 
 function showContain(state, action) {
-    let positionLetter = state.selected.findIndex((el) => el === true);
+    let positionLetter = state.selected.indexOf(true);
     state.contain[positionLetter] = action.payload;
 }
 
