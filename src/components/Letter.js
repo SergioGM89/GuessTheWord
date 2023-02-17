@@ -1,7 +1,7 @@
 import '../CSS/letter.css';
 import { useDispatch, useSelector } from "react-redux";
 import store from '../features/store';
-import {press, letter} from '../features/wordSlice';
+import {press, letter} from '../features/currentWordSlice';
 import { useEffect } from "react";
 
 function Letter(props) {

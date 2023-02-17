@@ -4,12 +4,15 @@ import Error from "./Error";
 import '../CSS/game.css';
 import store from "../features/store";
 import { Provider, useDispatch, useSelector } from "react-redux";
-import idFetch from "../features/thunks";
+import idFetch from "../features/idThunks";
 import { useEffect } from "react";
 
 function Game() {
     const id = useSelector(state => state.game.id);
     const errorId = useSelector(state => state.game.error);
+    const errorWord = useSelector(state => state.error.error);
+    
+    // console.log(useSelector(state => state.checkWord));
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -31,7 +34,7 @@ function Game() {
                     </div>
                 </div>
                 <Keyboard />
-                <Error />
+                {errorWord && <Error />}
             </div>
         </div>
         </Provider >

@@ -1,9 +1,12 @@
-import { useDispatch } from "react-redux";
-import { letter, backspace } from "../features/wordSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { letter, backspace } from "../features/currentWordSlice";
+import wordFetch from "../features/wordThunks";
+
 
 function Key(props) {
 
     const currentKey = props.currentKey;
+    const word = useSelector(state => state.currentWord.letters.join(''));
 
     const dispatch = useDispatch();
     const isEnter = () => currentKey === "enter";
@@ -12,7 +15,7 @@ function Key(props) {
         return (
             <div className="command" onClick={
                 (e) => {
-                    dispatch((isEnter())?"loquesea": backspace())
+                    dispatch((isEnter())? wordFetch(word) : backspace())
                 }}>
                  {isEnter()?"↵":"⌫"}
             </div>

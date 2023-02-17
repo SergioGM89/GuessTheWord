@@ -1,43 +1,40 @@
 import { createSlice } from "@reduxjs/toolkit";
-import idFetch from "./idThunks";
+import wordFetch from "./wordThunks";
 
 const initialState = {
-    id: null,
-    win: false,
-    lose: false,
-    error: null
+    error: null,
+    loading: false
 }
 
 function getIdPending(state) {
     console.log('pending');
     state.loading = true;
+    state.error = "";
 }
 
 function getIdFulFilled(state, action) {
     console.log('fulfilled');
     state.loading = false;
-    state.id = action.payload;
-    console.log("id: " + state.id);
+    // state.id = action.payload;
+    // console.log("id: " + state.id);
 }
 
 function getIdRejected(state, action) {
     console.log('rejected');
     state.loading = false;
     state.error = action.error.message;
-    console.log(action.error);
-    console.log(state.error);
 }
 
-const gameSlice = createSlice({
-    name: 'game',
+const checkWordSlice = createSlice({
+    name: 'checkWord',
     initialState,
     reducers: {
     },
     extraReducers: {
-        [idFetch.pending]: getIdPending,
-        [idFetch.fulfilled]: getIdFulFilled,
-        [idFetch.rejected]: getIdRejected,
+        [wordFetch.pending]: getIdPending,
+        [wordFetch.fulfilled]: getIdFulFilled,
+        [wordFetch.rejected]: getIdRejected,
     }
 })
 
-export default gameSlice.reducer;
+export default checkWordSlice.reducer;

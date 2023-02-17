@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { backspace } from "../features/wordSlice";
+import { backspace } from "../features/currentWordSlice";
 
 function Command(props) {
 

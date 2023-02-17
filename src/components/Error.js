@@ -1,11 +1,16 @@
+import { useSelector } from 'react-redux';
 import '../CSS/error.css';
 
+
 function Error(props) {
+
+    const error = useSelector(state => state.error.error);
+
     return (
         <div className="error">
             <div className="overlay"></div>
             <div>
-                <p>La palabra no está en la lista</p>
+                <p>{error}</p>
             </div>
         </div>
     )
