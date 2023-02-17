@@ -1,29 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    selected: [false, false, false, false, false],
-    contain: ["", "", "", "", ""]
+    letters: ["", "", "", "", ""],
+    colors: ["", "", "", "", ""],
+    selected: 0
 }
 
-function showSelected(state, action) {
-    [...state.selected] = initialState.selected;
-    state.selected[action.payload] = true;
-    // action.payload?.event.classList.add("selected");
+const firstLetterEmpty = (state) => state.letters.findIndex(letter => letter === "");
+
+function saveSelected(state, action) {
+    state.selected = action.payload;
 }
 
-function showContain(state, action) {
-    let positionLetter = state.selected.indexOf(true);
-    state.contain[positionLetter] = action.payload;
+function saveLetter(state, action) {
+    if (state.selected === null) return;
+    state.letters[state.selected] = action.payload;
+    (firstLetterEmpty(state) === -1) ?
+        state.selected = null : state.selected = firstLetterEmpty(state);
+}
+
+function removeLetter(state) {
+    if (state.selected === null) {
+        state.letters[state.letters.length - 1] = "";
+    } else if (state.letters[state.selected] !== "") {
+        state.letters[state.selected] = "";
+    } else if (state.selected !== 0) {
+        state.letters[state.selected - 1] = "";
+    }
+    state.selected = firstLetterEmpty(state);
 }
 
 const wordSlice = createSlice({
-    name: 'currentWord',
+    name: 'words',
     initialState,
     reducers: {
-        selected: showSelected,
-        contain: showContain
+        press: saveSelected,
+        letter: saveLetter,
+        backspace: removeLetter
     }
 })
 
-export const { selected, contain } = wordSlice.actions;
+export const { press, letter, backspace } = wordSlice.actions;
 export default wordSlice.reducer;

@@ -4,16 +4,12 @@ import Letter from "./Letter";
 
 function Word() {
     return (
-        <div className="words">
-            <div className="container ">
-                <div className="word">
-                    <Letter position={0} />
-                    <Letter position={1} />
-                    <Letter position={2} />
-                    <Letter position={3} />
-                    <Letter position={4} />
-                </div>
-            </div>
+        <div className="word">
+            <Letter position={0} />
+            <Letter position={1} />
+            <Letter position={2} />
+            <Letter position={3} />
+            <Letter position={4} />
         </div>
     )
 }

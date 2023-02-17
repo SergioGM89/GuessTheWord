@@ -12,7 +12,7 @@ async function getGameId() {
 }
 
 const idFetch = createAsyncThunk(
-    'id',
+    'getGame',
     getGameId
 )
 
