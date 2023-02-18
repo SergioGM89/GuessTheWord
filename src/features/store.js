@@ -5,11 +5,9 @@ import checkWordReducer from "./checkWordSlice";
 
 const store = configureStore({
     reducer: {
-
         game: gameReducer,
         currentWord: wordReducer,
         error: checkWordReducer
-
     }
 });
 

@@ -2,8 +2,7 @@ import Word from "./Word";
 import Keyboard from "./Keyboard";
 import Error from "./Error";
 import '../CSS/game.css';
-import store from "../features/store";
-import { Provider, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import idFetch from "../features/idThunks";
 import { useEffect } from "react";
 
@@ -23,7 +22,6 @@ function Game() {
     }, []);
 
     return (
-        <Provider store={store}>
             <div className="game">
                 {errorId && <div className="message">{`Error initializing game: ${errorId}`}</div>}
                 <div className="board">
@@ -37,7 +35,6 @@ function Game() {
                 {errorWord && <Error />}
             </div>
         </div>
-        </Provider >
     )
 }
 

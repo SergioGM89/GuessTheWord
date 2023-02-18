@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { letter, backspace } from "../features/currentWordSlice";
-import wordFetch from "../features/wordThunks";
+import wordFetch from "../features/checkWordThunks";
 
 
 function Key(props) {

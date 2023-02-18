@@ -6,15 +6,15 @@ async function getValidWord(word) {
         const data = await fetch(`http://localhost:8888/check/${word}`, { method: 'GET' });
         if(data.status < 200 || data.status > 299) { throw new Error(data.status); }
         const checkWord = await data.json();
-        return checkWord.valid;
+        if(!checkWord.valid) throw new Error('La palabra no está en la lista');;
     } catch (error) {
         throw error;
     }
 }
 
-const wordFetch = createAsyncThunk(
-    'checkWord',
+const checkWordFetch = createAsyncThunk(
+    'getValidWord',
     getValidWord
 )
 
-export default wordFetch;
+export default checkWordFetch;
