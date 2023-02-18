@@ -21,7 +21,8 @@ async function getColorWord(position, letter) {
         const response = await fetch(`http://localhost:8888/guess/${id}`, headers);
         if(response.status < 200 || response.status > 299) { throw new Error(response.status); }
         const colorStatusLetter = await response.json();
-        return colorStatusLetter;
+        if(colorStatusLetter.error) throw new Error(colorStatusLetter.error);
+        return colorStatusLetter.status;
     } catch (error) {
         throw error;
     }

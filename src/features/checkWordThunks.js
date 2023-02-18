@@ -6,7 +6,8 @@ async function getValidWord(word) {
         const data = await fetch(`http://localhost:8888/check/${word}`, { method: 'GET' });
         if(data.status < 200 || data.status > 299) { throw new Error(data.status); }
         const checkWord = await data.json();
-        if(!checkWord.valid) throw new Error('La palabra no está en la lista');;
+        if(checkWord.error) throw new Error('La palabra debe tener 5 letras');
+        if(!checkWord.valid) throw new Error('La palabra no está en la lista');
     } catch (error) {
         throw error;
     }
@@ -14,7 +15,7 @@ async function getValidWord(word) {
 
 const checkWordFetch = createAsyncThunk(
     'getValidWord',
-    getValidWord
+    getValidWord,
 )
 
 export default checkWordFetch;

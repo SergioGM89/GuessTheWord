@@ -10,8 +10,7 @@ function Game() {
     const id = useSelector(state => state.game.id);
     const errorId = useSelector(state => state.game.error);
     const errorWord = useSelector(state => state.error.error);
-    
-    // console.log(useSelector(state => state.checkWord));
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -22,12 +21,12 @@ function Game() {
     }, []);
 
     return (
-            <div className="game">
-                {errorId && <div className="message">{`Error initializing game: ${errorId}`}</div>}
-                <div className="board">
-                    <h1>Adivina la palabra</h1>
-                    <div className="words">
-                        <div className="container ">
+        <div className="game">
+            {errorId && <div className="message">{`Error initializing game: ${errorId}`}</div>}
+            <div className="board">
+                <h1>Adivina la palabra</h1>
+                <div className="words">
+                    <div className="container ">
                         <Word />
                     </div>
                 </div>
