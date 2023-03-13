@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import idFetch from "./thunks";
+import idFetch from "./idThunks";
 
 const initialState = {
     id: null,
-    loading: false,
-    error: ""
+    win: false,
+    lose: false,
+    error: null
 }
 
 function getIdPending(state) {
@@ -27,8 +28,8 @@ function getIdRejected(state, action) {
     console.log(state.error);
 }
 
-const idSlice = createSlice({
-    name: 'gameId',
+const gameSlice = createSlice({
+    name: 'game',
     initialState,
     reducers: {
     },
@@ -39,4 +40,4 @@ const idSlice = createSlice({
     }
 })
 
-export default idSlice.reducer;
+export default gameSlice.reducer;

@@ -2,15 +2,15 @@ import Word from "./Word";
 import Keyboard from "./Keyboard";
 import Error from "./Error";
 import '../CSS/game.css';
-import { Provider } from "react-redux";
-import store from "../features/store";
 import { useDispatch, useSelector } from "react-redux";
-import idFetch from "../features/thunks";
+import idFetch from "../features/idThunks";
 import { useEffect } from "react";
 
 function Game() {
-    const id = useSelector(state => state.nombre.id);
-    const errorId = useSelector(state => state.nombre.error);
+    const id = useSelector(state => state.game.id);
+    const errorId = useSelector(state => state.game.error);
+    const errorWord = useSelector(state => state.error.error);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,17 +21,19 @@ function Game() {
     }, []);
 
     return (
-        <Provider store={store}>
-            <div className="game">
-                { errorId && <div className="message">{`Error initializing game: ${errorId}`}</div> }
-                    <div className="board">
-                        <h1>Adivina la palabra</h1>
+        <div className="game">
+            {errorId && <div className="message">{`Error initializing game: ${errorId}`}</div>}
+            <div className="board">
+                <h1>Adivina la palabra</h1>
+                <div className="words">
+                    <div className="container ">
                         <Word />
-                        <Keyboard />
-                        <Error />
                     </div>
+                </div>
+                <Keyboard />
+                {errorWord && <Error />}
             </div>
-        </Provider>
+        </div>
     )
 }
 
